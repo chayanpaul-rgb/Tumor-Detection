@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection - MRI Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>Brain Tumor Detection</h1>
+            </div>
+            <p class="subtitle">AI-Powered MRI Image Analysis</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 8L12 3L7 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <h2>Upload MRI Image</h2>
+                        <p>Drag and drop your MRI image here, or click to browse</p>
+                        <p class="file-info">Supported formats: PNG, JPG, JPEG, GIF, BMP, TIFF</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                        <button class="browse-btn" type="button">Browse Files</button>
+                    </div>
+                </div>
+
+                <div class="preview-section" id="previewSection" style="display: none;">
+                    <div class="preview-container">
+                        <div class="image-preview">
+                            <img id="previewImage" src="" alt="Uploaded MRI">
+                            <button class="remove-btn" id="removeBtn">×</button>
+                        </div>
+                        <button class="analyze-btn" id="analyzeBtn">
+                            <span class="btn-text">Analyze Image</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card">
+                    <h3>Analysis Result</h3>
+                    <div class="result-content">
+                        <div class="result-icon" id="resultIcon"></div>
+                        <div class="result-text">
+                            <h2 id="resultTitle"></h2>
+                            <p id="resultMessage"></p>
+                            <div class="confidence-bar">
+                                <div class="confidence-label">
+                                    <span>Confidence Level</span>
+                                    <span id="confidenceValue"></span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="new-analysis-btn" onclick="resetAnalysis()">Analyze Another Image</button>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>How it works</h3>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-number">1</div>
+                        <h4>Upload Image</h4>
+                        <p>Select or drag your MRI scan image</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-number">2</div>
+                        <h4>AI Analysis</h4>
+                        <p>Our model analyzes the image for tumors</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-number">3</div>
+                        <h4>Get Results</h4>
+                        <p>Receive instant prediction with confidence score</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>⚠️ This tool is for research purposes only. Always consult medical professionals for diagnosis.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
